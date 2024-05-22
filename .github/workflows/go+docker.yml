@@ -39,5 +39,5 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         push: true
-        tags: lancefontyhs/ghaction:latest
+        tags: lancefontys/ghaction:latest
           
