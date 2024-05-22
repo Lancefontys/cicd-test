@@ -28,6 +28,7 @@ jobs:
       run: go test -v ./GoHelloWorld.go
 
   docker:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
       name: Check out code
@@ -35,7 +36,7 @@ jobs:
     - uses: mr-smithers-excellent/docker-build-push@v6
       name: Build & push Docker image
       with:
-        image: repo/image
+        image: lancefontys/ghaction
         tags: v1, latest
         registry: registry-url.io
         dockerfile: Dockerfile.ci
