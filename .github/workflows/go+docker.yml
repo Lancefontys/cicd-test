@@ -10,9 +10,10 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
+  
     runs-on: ubuntu-latest
+    
     steps:
     - uses: actions/checkout@v4
 
@@ -27,18 +28,10 @@ jobs:
     - name: Test
       run: go test -v ./GoHelloWorld.go
 
-  docker:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-      name: Check out code
-
-    - uses: mr-smithers-excellent/docker-build-push@v6
-      name: Build & push Docker image
+    - name: Build & push Docker image
+      uses: mr-smithers-excellent/docker-build-push@v6
       with:
         image: lancefontys/ghaction
-        tags: v1, latest
         registry: docker.io
-        dockerfile: Dockerfile.ci
         username: lancefontys
         password: ${{ secrets.DOCKER_PASSWORD }}
